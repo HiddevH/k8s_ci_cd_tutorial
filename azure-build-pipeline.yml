@@ -2,8 +2,8 @@
 # Build a Docker image
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/acr-template?view=azure-devops
 
-trigger:
-- master
+#trigger:
+#- master
 
 resources:
 - repo: self

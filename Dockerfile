@@ -1,10 +1,14 @@
-FROM alpine:latest
+FROM python:3.7-slim-buster
 
-# Update
-RUN apk add --update python3.7 python3-pip
+COPY requirements.txt /tmp/
 
 # Install app dependencies
-RUN pip install -r requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
+# Create non-root User to run scripts
+RUN useradd --create-home appuser
+WORKDIR /home/appuser
+USER appuser
 
 # Bundle app source
 COPY api.py /src/api.py
