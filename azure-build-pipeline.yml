@@ -2,11 +2,8 @@
 # Build a Docker image
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/acr-template?view=azure-devops
 
-#trigger:
-#- master
-
-resources:
-- repo: self
+trigger:
+- master
 
 variables:
   tag: '$(Build.BuildId)'
@@ -24,7 +21,7 @@ stages:
       displayName: Build and push an image to container registry
       inputs:
         command: buildAndPush
-        repository: self
+        repository: api_test_hidde
         dockerfile: '**/Dockerfile'
         # registryName is the ContainerRegistry name according to the Azure DevOps Service connection!
         containerRegistry: $(registryName)
