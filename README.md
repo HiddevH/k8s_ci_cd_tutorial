@@ -1,8 +1,13 @@
 # docker_api_test
 This repository contains a 'hello world' api to test Azure Data Factory webhook functionality with containerized API's deployed in K8s.
 
-## Local Installation
+## Azure Pipeline
+Committing to the master branch of this repo will trigger the pipeline. Deploying to k8s will be like this:
+https://cloudblogs.microsoft.com/opensource/2018/11/27/tutorial-azure-devops-setup-cicd-pipeline-kubernetes-docker-helm/
 
+![alt text](https://cloudblogs.microsoft.com/uploads/prod/sites/37/2018/11/AzureDevOps-overview.png)
+
+## Local Installation
 
 Use the requirements.txt or the environment.yml to create the environment with all neccesary packages.
 
