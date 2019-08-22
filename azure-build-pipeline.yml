@@ -26,6 +26,7 @@ stages:
         command: buildAndPush
         repository: self
         dockerfile: '**/Dockerfile'
+        # registryName is the ContainerRegistry name according to the Azure DevOps Service connection!
         containerRegistry: $(registryName)
         tags: |
           $(tag)
