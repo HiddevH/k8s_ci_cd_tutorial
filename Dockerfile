@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Update
-RUN apk add --update python py-pip
+RUN apk add --update python3.7 python3-pip
 
 # Install app dependencies
 RUN pip install -r requirements.txt

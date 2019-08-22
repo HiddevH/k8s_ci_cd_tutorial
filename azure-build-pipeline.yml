@@ -1,23 +1,31 @@
-pool:
-  vmImage: 'ubuntu-latest'
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/acr-template?view=azure-devops
 
 trigger:
 - master
 
+resources:
+- repo: self
+
 variables:
-  projectName: docker_api
-  registryServerName: '$(registryName).azurecr.io'
-  imageName: '$(projectName)'
-  # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
+  tag: '$(Build.BuildId)'
 
-
-steps:
-- bash: docker build -f $(system.defaultWorkingDirectory)/$(projectName)/Dockerfile -t $(registryServerName)/$(imageName):$(build.buildId) $(system.defaultWorkingDirectory)/$(projectName)
-  displayName: 'docker build'
-
-- bash: |
-    docker login $(registryServerName) -u $(registryLogin) -p $(registryPassword)
-    docker push $(registryServerName)/$(imageName):$(build.buildId)
-  displayName: 'docker push'
-  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))
-
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build job
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: self
+        dockerfile: '**/Dockerfile'
+        containerRegistry: $(registryName)
+        tags: |
+          $(tag)
