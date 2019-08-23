@@ -18,7 +18,7 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - task: Docker@2
-      displayName: Build and push an image to container registry
+      displayName: Build and push an image to container registry x
       inputs:
         command: buildAndPush
         repository: api_test_hidde
