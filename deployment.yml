@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-test-hidde-deployment
+  labels:
+    app: api-test-hidde
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-test-hidde
+  template:
+    metadata:
+      labels:
+        app: api-test-hidde
+    spec:
+      containers:
+        - name: api-test-hidde
+          image: datahubcommonacr.azurecr.io/api_test_hidde:latest
+          ports:
+            - containerPort: 5002
+          resources:
+            requests:
+              cpu: 250m
+            limits:
+              cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-test-hidde-svc
+  labels:
+    app: api-test-hidde
+spec:
+  selector:
+    app: api-test-hidde
+  ports:
+  - protocol: TCP
+    port: 5002
+    targetPort: 5002
