@@ -2,11 +2,19 @@
 # Build a Docker image
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/acr-template?view=azure-devops
 
+# Trigger on update of the folder app within the master branch
 trigger:
-- master
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - /app
 
 variables:
+  pathHome: app
   tag: '$(Build.BuildId)'
+  
 
 stages:
 - stage: Build
@@ -22,7 +30,7 @@ stages:
       inputs:
         command: buildAndPush
         repository: api_test_hidde
-        dockerfile: '**/Dockerfile'
+        dockerfile: $(pathHome)/Dockerfile
         # registryName is the ContainerRegistry name according to the Azure DevOps Service connection!
         containerRegistry: $(registryName)
         tags: |

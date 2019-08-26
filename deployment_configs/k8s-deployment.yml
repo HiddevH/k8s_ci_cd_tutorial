@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: api-test-hidde
-          image: datahubcommonacr.azurecr.io/api_test_hidde:latest
+          image: datahubcommonacr.azurecr.io/api_test_hidde:##BUILD_ID##
           ports:
             - containerPort: 5002
           resources:
