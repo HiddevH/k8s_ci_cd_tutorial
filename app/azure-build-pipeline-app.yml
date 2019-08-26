@@ -9,7 +9,7 @@ trigger:
     - master
   paths:
     include:
-    - /app
+    - app/
 
 variables:
   pathHome: app
