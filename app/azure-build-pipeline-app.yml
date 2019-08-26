@@ -12,7 +12,6 @@ trigger:
     - app/
 
 variables:
-  pathHome: app
   tag: '$(Build.BuildId)'
   
 
