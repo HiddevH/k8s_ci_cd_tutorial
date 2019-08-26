@@ -6,7 +6,7 @@ metadata:
   labels:
     app: api-test-hidde
 spec:
-  replicas: 1
+  replicas: 0 # we can put this to 1 but then it will never die because of backup kicking in
   selector:
     matchLabels:
       app: api-test-hidde
