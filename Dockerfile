@@ -13,5 +13,8 @@ USER appuser
 # Bundle app source
 COPY api.py /src/api.py
 
+# K8s deployment configs
+COPY deployment.yml /configs/deployment.yml
+
 EXPOSE  5002
 CMD ["python", "/src/api.py", "-p 5002"]
