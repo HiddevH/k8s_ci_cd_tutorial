@@ -8,14 +8,14 @@ trigger:
     - master
   paths:
     include:
-    - deployment_configs/
+    - deployment_config/
 
 pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
 - task: PublishBuildArtifacts@1
-  displayName: 'publish deployment_configs folder as an artifact'
+  displayName: 'publish deployment_config folder as an artifact'
   inputs:
-    pathToPublish: 'deployment_configs'
+    pathToPublish: 'deployment_config'
     artifactName: 'deploy_config_k8s_ci_cd_tutorial'

@@ -2,22 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-test-hidde-deployment
+  name: k8s_ci_cd_tutorial
   labels:
-    app: api-test-hidde
+    app: k8s_ci_cd_tutorial
+    author: hidde
 spec:
   replicas: 1 
   selector:
     matchLabels:
-      app: api-test-hidde
+      app: k8s_ci_cd_tutorial
   template:
     metadata:
       labels:
-        app: api-test-hidde
+        app: k8s_ci_cd_tutorial
+        author: hidde
     spec:
       containers:
-        - name: api-test-hidde
-          image: datahubcommonacr.azurecr.io/api_test_hidde:##BUILD_ID##
+        - name: k8s_ci_cd_tutorial
+          image: datahubcommonacr.azurecr.io/k8s_ci_cd_tutorial:##BUILD_ID##
           ports:
             - containerPort: 5002
           resources:
@@ -29,12 +31,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: api-test-hidde-svc
+  name: k8s_ci_cd_tutorial
   labels:
-    app: api-test-hidde
+    app: k8s_ci_cd_tutorial
+    author: hidde
 spec:
   selector:
-    app: api-test-hidde
+    app: k8s_ci_cd_tutorial
   ports:
   - protocol: TCP
     port: 5002
