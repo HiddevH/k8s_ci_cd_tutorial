@@ -17,5 +17,4 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'publish deployment_configs folder as an artifact'
   inputs:
-    pathToPublish: 'deployment_configs'
-    artifactName: 'deploy_config_api_test'
+    artifactName: 'deploy_config_k8s_ci_cd_tutorial'
