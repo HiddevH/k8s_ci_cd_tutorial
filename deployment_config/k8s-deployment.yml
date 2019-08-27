@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s_ci_cd_tutorial
+  name: k8s-ci-cd-tutorial
   labels:
-    app: k8s_ci_cd_tutorial
+    app: k8s-ci-cd-tutorial
     author: hidde
 spec:
   replicas: 1 
   selector:
     matchLabels:
-      app: k8s_ci_cd_tutorial
+      app: k8s-ci-cd-tutorial
   template:
     metadata:
       labels:
-        app: k8s_ci_cd_tutorial
+        app: k8s-ci-cd-tutorial
         author: hidde
     spec:
       containers:
-        - name: k8s_ci_cd_tutorial
-          image: datahubcommonacr.azurecr.io/k8s_ci_cd_tutorial:##BUILD_ID##
+        - name: k8s-ci-cd-tutorial
+          image: datahubcommonacr.azurecr.io/k8s-ci-cd-tutorial:##BUILD_ID##
           ports:
             - containerPort: 5002
           resources:
@@ -31,13 +31,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: k8s_ci_cd_tutorial
+  name: k8s-ci-cd-tutorial
   labels:
-    app: k8s_ci_cd_tutorial
+    app: k8s-ci-cd-tutorial
     author: hidde
 spec:
   selector:
-    app: k8s_ci_cd_tutorial
+    app: k8s-ci-cd-tutorial
   ports:
   - protocol: TCP
     port: 5002
