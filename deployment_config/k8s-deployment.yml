@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: k8s-ci-cd-tutorial
-          image: datahubcommonacr.azurecr.io/k8s-ci-cd-tutorial:##BUILD_ID##
+          image: datahubcommonacr.azurecr.io/k8s_ci_cd_tutorial:##BUILD_ID##
           ports:
             - containerPort: 5002
           resources:
