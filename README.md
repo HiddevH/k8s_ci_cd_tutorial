@@ -49,6 +49,7 @@ Note: There is a parameter `##BUILD_ID##` that will be filled in by Azure Pipeli
  The two CI pipelines have seperate triggers on directories within the master branch of de `docker_api_test` repo. Upon detecting a change in the `app` folder for instance, Azure Pipelines will start building a new Docker Image and push it to Azure Container Registry (ACR). All pipelines are written in YAML and stored in the repositories itself.
 
 ![alt text](https://i.postimg.cc/fRwnHmC1/cicd.jpg)
+
 *Schematic overview of the CI/CD pipelines*
 
 ### Build (CI) Pipelines
