@@ -28,7 +28,7 @@ stages:
       displayName: Build and push an image to container registry x
       inputs:
         command: buildAndPush
-        repository: api_test_hidde
+        repository: k8s_ci_cd_tutorial
         dockerfile: $(pathHome)/Dockerfile
         # registryName is the ContainerRegistry name according to the Azure DevOps Service connection!
         containerRegistry: $(registryName)
