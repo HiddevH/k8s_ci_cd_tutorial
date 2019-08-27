@@ -60,9 +60,9 @@ The Release Pipeline is triggered on two Artifacts. The first trigger is upon th
 
 Then we have one stage in Release, with two tasks. The first task will retrieve the Build (version) number of the latest Docker Image (according to the CI) and inserts this as the `##BUILD_ID##` in the k8s deployment config.
 ```bash
-# GET BUILD_ID from release artifact _API_TEST_HIDDE (the docker image) and SET the BUILD_ID parameter in the k8s-deployment.yml file
+# GET BUILD_ID from release artifact _K8S_CI_CD_TUTORIAL (the docker image) and SET the BUILD_ID parameter in the k8s-deployment.yml file
 
-sed -i "s/##BUILD_ID##/${RELEASE_ARTIFACTS__K8S_CI_CD_TUTORIAL_BUILDNUMBER}/g" "$SYSTEM_ARTIFACTSDIRECTORY/_deploy_config_k8s_ci_cd_tutorial/deployment_config/k8s-deployment.yml"
+sed -i "s/##BUILD_ID##/${RELEASE_ARTIFACTS__K8S_CI_CD_TUTORIAL_BUILDNUMBER}/g" "$SYSTEM_ARTIFACTSDIRECTORY/_k8s_ci_cd_config/deploy_config_k8s_ci_cd_tutorial/k8s-deployment.yml"
 ```
  *Note: I actually wonder why not just use the `latest` version in de deployment config, but I can imagine this is more resilient.*
 
